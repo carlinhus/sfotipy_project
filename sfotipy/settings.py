@@ -85,6 +85,9 @@ DATABASES = {
     }
 }
 
+#Media root
+MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+MEDIA_URL = "/media/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

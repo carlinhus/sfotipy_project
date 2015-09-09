@@ -1,3 +1,6 @@
+from .models import Track
 from django.contrib import admin
 
-# Register your models here.
+@admin.register(Track)
+class TrackAdmin(admin.ModelAdmin):
+	pass

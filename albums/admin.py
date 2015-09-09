@@ -1,3 +1,12 @@
+"""
+@author Carlos Campo
+
+Copyleft license
+
+"""
+from .models import Album
 from django.contrib import admin
 
-# Register your models here.
+@admin.register(Album)
+class AlbumAdmin(admin.ModelAdmin):
+	list_display = ("title", "showCover", "artist",)
