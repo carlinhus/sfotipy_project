@@ -12,3 +12,8 @@ class Track(models.Model):
 
     def __str__(self):
     	return self.title
+
+    def play(self):
+        return "<audio controls> <source src='%s' type='audio/mpeg'>Your browser doesn't support audio HTML5 tag</audio>" % self.track_file.url
+
+    play.allow_tags = True 

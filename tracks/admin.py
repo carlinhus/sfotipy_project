@@ -3,4 +3,5 @@ from django.contrib import admin
 
 @admin.register(Track)
 class TrackAdmin(admin.ModelAdmin):
-	pass
+    list_display = ("title", "order", "album", "artist", "play")
+    ordering = ("album", "order")
