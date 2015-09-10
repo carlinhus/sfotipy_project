@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """sfotipy URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,9 +17,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from userprofiles.views import ProfileView
 import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : settings.MEDIA_ROOT}),
+    url(r'^profile/$', ProfileView.as_view(), name="profile")
 ]
