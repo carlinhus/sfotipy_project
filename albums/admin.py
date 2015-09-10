@@ -9,4 +9,5 @@ from django.contrib import admin
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-	list_display = ("title", "showCover", "artist",)
+    list_display = ("title", "showCover", "artist",)
+    prepopulated_fields = {"slug": ("title",)}

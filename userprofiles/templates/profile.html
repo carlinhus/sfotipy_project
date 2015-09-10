@@ -1,6 +1,17 @@
-<div style="width: 70%; margin: 0 auto;">
-        <figure style="text-align: center;">
-            <img src="{{MEDIA_URL}}{{ user.userprofile.avatar }}" alt="{{ user.username }}"/>
-            <figcaption>{{ user.username }}</figcaption>
-        </figure>
-</div>
+
+{% extends 'base.html' %}
+{% block title %}Profile of {{user.username}} {% endblock title %}
+{% block content %}
+
+<div class="jumbotron">
+      <div class="container">
+        <div>
+            <figure style="text-align: center; margin: 1em 40px;">
+                <img src="{{MEDIA_URL}}{{ user.userprofile.avatar }}" alt="{{ user.username }}"/>
+                <figcaption>{{ user.username }}</figcaption>
+            </figure>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
