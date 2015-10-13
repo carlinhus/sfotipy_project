@@ -22,15 +22,30 @@
           <a class="navbar-brand" href="#">Sfotipy</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          {% if user.is_authenticated %}
           <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <a class="btn btn-danger" href="/logout">Log out</a>
+            </div>
+            <div class="form-group">
+              <a href="/profile">
+                <img width="34" height="34" class="img-circle img-responsive center-block" src="{{MEDIA_URL}}{{ user.userprofile.avatar }}" alt="{{ user.username }}"/>
+              </a>
+            </div>
+          </form>
+          {% else %}
+          <form class="navbar-form navbar-right" method="post" action="/login/">
+            
+            {% csrf_token %}
             <div class="form-group">
               <input name="username" type="text" placeholder="Username" class="form-control">
             </div>
             <div class="form-group">
               <input name="password" type="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-success">Log in</button>
           </form>
+          {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
@@ -42,6 +57,12 @@
     </div>
     <script src="{% static "js/jquery.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
-    {% block js %}{% endblock js %}
+    {% block js %}
+     {% if loginError%}
+      <script>
+      alert("{{loginError}}");
+      </script>
+     {% endif %}
+    {% endblock js %}
 	</body>
 </html>
